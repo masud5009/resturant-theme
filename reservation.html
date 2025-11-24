@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reservation — Spice Palace</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-glass fixed-top"><div class="container"><a class="navbar-brand" href="index.html">Spice Palace</a></div></nav>
+  <main class="pt-5 mt-5">
+    <section class="py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <h2>Reserve a Table</h2>
+            <p class="text-muted">Book your table for an unforgettable dining experience.</p>
+            <form id="reservationForm" class="card p-4 glass-card">
+              <div class="row g-3">
+                <div class="col-md-6"><label class="form-label">Full Name</label><input class="form-control" required></div>
+                <div class="col-md-6"><label class="form-label">Phone</label><input class="form-control" required></div>
+                <div class="col-md-4"><label class="form-label">Date</label><input class="form-control fp-date" required></div>
+                <div class="col-md-4"><label class="form-label">Time</label><input class="form-control fp-time" required></div>
+                <div class="col-md-4"><label class="form-label">Guests</label><select class="form-select"><option>1</option><option>2</option><option>3</option><option>4+</option></select></div>
+                <div class="col-12"><label class="form-label">Special Requests</label><textarea class="form-control" rows="3"></textarea></div>
+                <div class="col-12 text-end"><button class="btn btn-primary" type="submit">Confirm Reservation</button></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.getElementById('reservationForm').addEventListener('submit', function(e){ e.preventDefault(); Toastify({text:'Reservation confirmed. We look forward to serving you!', duration:3000, backgroundColor:'#28a745'}).showToast(); this.reset(); });
+  </script>
+</body>
+</html>

@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Spice Palace — Fine Dining & Cafe</title>
+    <meta name="description"
+        content="Spice Palace — Fine Dining & Cafe. Reserve tables, order online, explore menu & more.">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600;700&family=Poppins:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5.3.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AOS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- Swiper -->
+    <link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet">
+    <!-- GLightbox -->
+    <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
+    <!-- Flatpickr -->
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+    <!-- Toastify -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <!-- Font Awesome Free -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <meta name="theme-color" content="#0f0f0f">
+</head>
+
+<body>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="logo-anim" aria-hidden>
+            <div class="logo-mark">SP</div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="nav" class="navbar navbar-expand-lg fixed-top nav-glass">
+        <div class="container">
+            <a class="navbar-brand" href="#">Spice Palace</a>
+            <!-- Mobile app-style hamburger: opens custom mobile menu on small screens -->
+            <button id="mobileToggle" class="navbar-toggler d-lg-none" type="button" aria-label="Open menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navCollapse">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#chefs">Chefs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item ms-3 d-none d-lg-block"><a class="btn btn-sm btn-glow" href="#reservation">Book Table</a></li>
+                        <li class="nav-item ms-2 d-none d-lg-block"><button id="themeToggle" class="btn btn-ghost btn-sm"
+                            aria-label="Toggle theme"><i class="fa fa-moon"></i></button></li>
+                    <li class="nav-item ms-2 d-none d-lg-block">
+                        <div class="cart-fab-inline" data-bs-toggle="offcanvas" data-bs-target="#miniCart"
+                            aria-label="Open cart">
+                            <i class="fas fa-shopping-bag"></i><span class="count">0</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile App-Style Menu (bottom-sheet) -->
+    <div id="mobileOverlay" aria-hidden="true"></div>
+    <aside id="mobileMenu" aria-hidden="true" class="mobile-menu" role="dialog" aria-modal="true">
+        <button id="mobileClose" class="mobile-close" aria-label="Close menu"><i class="fa fa-times"></i></button>
+        <div class="mobile-menu-header d-flex align-items-center gap-3">
+            <img src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?q=80&w=200&auto=format&fit=crop&s=1" alt="avatar" class="mobile-avatar rounded-circle">
+            <div>
+                <div class="mobile-app-title">Spice Palace</div>
+                <div class="mobile-app-sub muted">Welcome</div>
+            </div>
+        </div>
+
+        <nav class="mobile-nav mt-3" role="navigation">
+            <a class="mobile-menu-item" href="#home"><i class="fa fa-home"></i><span>Home</span></a>
+            <a class="mobile-menu-item" href="#about"><i class="fa fa-info-circle"></i><span>About</span></a>
+            <a class="mobile-menu-item" href="#menu"><i class="fa fa-list"></i><span>Menu</span></a>
+            <a class="mobile-menu-item" href="#chefs"><i class="fa fa-user"></i><span>Chefs</span></a>
+            <a class="mobile-menu-item" href="#gallery"><i class="fa fa-image"></i><span>Gallery</span></a>
+            <a class="mobile-menu-item" href="#reservation"><i class="fa fa-calendar-alt"></i><span>Reservation</span></a>
+            <a class="mobile-menu-item" href="#contact"><i class="fa fa-envelope"></i><span>Contact</span></a>
+        </nav>
+
+        <div class="mobile-footer mt-4 muted small text-center">App-style menu · Smooth native-like UX</div>
+    </aside>
+
+    <!-- HERO: video background + particles + CTAs -->
+    <header id="home" class="hero">
+        <video id="heroVideo" class="hero-video" autoplay muted loop playsinline
+            poster="https://images.unsplash.com/photo-1541544180106-2d95b6d3f2f0?q=80&w=2000&auto=format&fit=crop&s=1">
+            <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" type="video/mp4">
+        </video>
+        <canvas id="particles-js"></canvas>
+        <div class="hero-overlay"></div>
+        <div class="container hero-container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 text-white" data-aos="fade-up">
+                    <h1 class="hero-title"><span class="title-gradient">Spice Palace</span><br><small
+                            class="hero-tag">Luxury Dining & Contemporary Flavors</small></h1>
+                    <p class="hero-sub">Elegant seasonal menus • Private dining • Takeaway & Delivery</p>
+                    <div class="mt-4 cta d-flex gap-3">
+                        <a href="#reservation" class="btn btn-primary btn-cta" id="bookBtn">Book Table</a>
+                        <a href="#menu" class="btn btn-outline-cta btn-cta" id="orderBtn">Order Now</a>
+                    </div>
+                    <div class="mt-4 hero-info d-flex gap-4 align-items-center">
+                        <div><i class="fas fa-clock"></i> <strong>Open</strong> 11:00 — 23:00</div>
+                        <div><i class="fas fa-phone"></i> <strong>Call</strong> +880 1234 567890</div>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block">
+                    <!-- Floating signature dish cards -->
+                    <div class="float-collection">
+                        <div class="float-card" data-aos="fade-down" data-aos-delay="300">
+                            <img src="https://images.unsplash.com/photo-1525755662778-989d0524087e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Signature 1">
+                            <div class="fc-info"><strong>Royal Lamb Rack</strong><span>$34</span></div>
+                        </div>
+                        <div class="float-card" data-aos="fade-down" data-aos-delay="380">
+                            <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=800&auto=format&fit=crop&s=1"
+                                alt="Signature 2">
+                            <div class="fc-info"><strong>Tandoori Cauliflower</strong><span>$9</span></div>
+                        </div>
+                        <div class="float-card" data-aos="fade-down" data-aos-delay="460">
+                            <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=1200&auto=format&fit=crop&s=1"
+                                alt="Signature 3">
+                            <div class="fc-info"><strong>Seared Scallops</strong><span>$26</span></div>
+                        </div>
+                        <div class="float-card" data-aos="fade-down" data-aos-delay="540">
+                            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Signature 4">
+                            <div class="fc-info"><strong>Cardamom Crème</strong><span>$10</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ABOUT (split with counters) -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row align-items-center gy-4">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="about-image glass position-relative overflow-hidden">
+                        <!-- About slider (keeps same visual accents: badge + accent) -->
+                        <div class="swiper aboutSwiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200&auto=format&fit=crop&s=1" alt="Dining" class="img-fluid rounded shadow-sm">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop&s=1" alt="Dining 2" class="img-fluid rounded shadow-sm">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=800&auto=format&fit=crop&s=1" alt="Dining 3" class="img-fluid rounded shadow-sm">
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        </div>
+                        <div class="image-accent" aria-hidden></div>
+                        <div class="badge-special">Since <strong>2005</strong></div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="glass about-content p-4">
+                        <h3 class="mb-2">About Spice Palace</h3>
+                        <div class="decor-line mb-3" aria-hidden></div>
+                        <p class="lead">A contemporary dining experience blending classic flavors with refined technique. We craft seasonal tasting menus, host intimate private events, and offer curated wine pairings for every occasion.</p>
+
+                        <div class="row stats g-3 mt-4">
+                            <div class="col-6">
+                                <div class="stat p-3 d-flex flex-column align-items-start">
+                                    <div class="num counter" data-target="20">0</div>
+                                    <div class="label muted">Years of Craft</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="stat p-3 d-flex flex-column align-items-start">
+                                    <div class="num counter" data-target="10000">0</div>
+                                    <div class="label muted">Happy Guests</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="stat p-3 d-flex flex-column align-items-start">
+                                    <div class="num counter" data-target="50">0</div>
+                                    <div class="label muted">Signature Dishes</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="stat p-3 d-flex flex-column align-items-start">
+                                    <div class="num counter" data-target="5">0</div>
+                                    <div class="label muted">Star Rating</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="about-cta mt-4 d-flex gap-3">
+                            <a href="#menu" class="btn btn-glow">View Menu</a>
+                            <a href="#reservation" class="btn btn-ghost">Reserve Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES / Why Choose Us -->
+    <section class="why py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3" data-aos="fade-up">
+                    <div class="feature glass text-center">
+                        <div class="f-icon"><i class="fas fa-seedling"></i></div>
+                        <h5>Fresh Ingredients</h5>
+                        <p class="muted">Locally sourced & seasonal</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature glass text-center">
+                        <div class="f-icon"><i class="fas fa-wine-glass-alt"></i></div>
+                        <h5>Fine Wine</h5>
+                        <p class="muted">Curated sommelier list</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature glass text-center">
+                        <div class="f-icon"><i class="fas fa-utensils"></i></div>
+                        <h5>Expert Chefs</h5>
+                        <p class="muted">Classically trained</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature glass text-center">
+                        <div class="f-icon"><i class="fas fa-star"></i></div>
+                        <h5>Exceptional Service</h5>
+                        <p class="muted">Attention to every detail</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TODAY'S SPECIAL (Swiper) -->
+    <section id="specials">
+        <div class="container">
+            <h3 class="mb-4" data-aos="fade-up">Today's Special</h3>
+            <div class="swiper mySwiper" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="special-card">
+                            <img src="https://images.unsplash.com/photo-1604908177522-0d45e7f6b6d5?q=80&w=1600&auto=format&fit=crop&s=1"
+                                alt="Scallops">
+                            <div class="p-3">
+                                <h5>Seared Scallops</h5>
+                                <div class="d-flex justify-content-between align-items-center mt-2">
+                                    <div class="price">$26</div>
+                                    <button class="add-to-cart btn btn-sm" data-id="6" data-name="Seared Scallops"
+                                        data-price="26"
+                                        data-image="https://images.unsplash.com/photo-1604908177522-0d45e7f6b6d5?q=80&w=1600&auto=format&fit=crop&s=1">Add
+                                        to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="special-card">
+                            <img src="https://images.unsplash.com/photo-1603133872878-7e3533f6a5f3?q=80&w=1600&auto=format&fit=crop&s=1"
+                                alt="Biryani">
+                            <div class="p-3">
+                                <h5>Vegetable Biryani</h5>
+                                <div class="d-flex justify-content-between align-items-center mt-2">
+                                    <div class="price">$18</div>
+                                    <button class="add-to-cart btn btn-sm" data-id="12" data-name="Vegetable Biryani"
+                                        data-price="18"
+                                        data-image="https://images.unsplash.com/photo-1603133872878-7e3533f6a5f3?q=80&w=1600&auto=format&fit=crop&s=1">Add
+                                        to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="special-card">
+                            <img src="https://images.unsplash.com/photo-1498654201970-0d3b8f9d4f05?q=80&w=1600&auto=format&fit=crop&s=1"
+                                alt="Beef">
+                            <div class="p-3">
+                                <h5>Herb-Crusted Beef</h5>
+                                <div class="d-flex justify-content-between align-items-center mt-2">
+                                    <div class="price">$30</div>
+                                    <button class="add-to-cart btn btn-sm" data-id="5" data-name="Herb-Crusted Beef"
+                                        data-price="30"
+                                        data-image="https://images.unsplash.com/photo-1498654201970-0d3b8f9d4f05?q=80&w=1600&auto=format&fit=crop&s=1">Add
+                                        to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination mt-3"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU CATEGORIES -->
+    <section id="menu" data-aos="fade-up">
+        <div class="container">
+            <h3 class="mb-3">Interactive Menu</h3>
+            <div class="categories mb-4">
+                <div class="cat-pill active" data-filter="all">All</div>
+                <div class="cat-pill" data-filter="starters">Starters</div>
+                <div class="cat-pill" data-filter="mains">Mains</div>
+                <div class="cat-pill" data-filter="desserts">Desserts</div>
+                <div class="cat-pill" data-filter="beverages">Beverages</div>
+            </div>
+
+            <div class="row menu-grid gy-4"></div>
+
+            <script id="menu-data" type="application/json">
+        [
+          {"id":1,"cat":"starters","name":"Spiced Lentil Soup","price":8,"img":"https://images.unsplash.com/photo-1542444459-db68b6c4b2b2?q=80&w=1200&auto=format&fit=crop&s=1","desc":"Warm lentil soup with cumin and crisp shallots"},
+          {"id":2,"cat":"starters","name":"Tandoori Cauliflower","price":9,"img":"https://images.unsplash.com/photo-1546069901-eacef0df6022?q=80&w=1200&auto=format&fit=crop&s=1","desc":"Smoky roasted cauliflower with raita"},
+          {"id":3,"cat":"mains","name":"Royal Spice Lamb Rack","price":34,"img":"https://images.unsplash.com/photo-1604908177522-0d45e7f6b6d5?q=80&w=1200&auto=format&fit=crop&s=1","desc":"Slow-charred lamb with saffron jus"},
+          {"id":4,"cat":"mains","name":"Citrus Tamarind Salmon","price":28,"img":"https://images.unsplash.com/photo-1541544180106-2d95b6d3f2f0?q=80&w=1200&auto=format&fit=crop&s=1","desc":"Pan-seared salmon with tamarind glaze"},
+          {"id":5,"cat":"mains","name":"Herb-Crusted Beef","price":30,"img":"https://images.unsplash.com/photo-1498654201970-0d3b8f9d4f05?q=80&w=1200&auto=format&fit=crop&s=1","desc":"Served with truffle mash"},
+          {"id":6,"cat":"mains","name":"Seared Scallops","price":26,"img":"https://images.unsplash.com/photo-1512058564366-c9e3b4d6b1b0?q=80&w=1200&auto=format&fit=crop&s=1","desc":"Citrus butter & micro herbs"},
+          {"id":7,"cat":"desserts","name":"Cardamom Crème Brûlée","price":10,"img":"https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop&s=1","desc":"Silky custard, torched sugar"},
+          {"id":8,"cat":"desserts","name":"Saffron Panna Cotta","price":11,"img":"https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop&s=1","desc":"With rose syrup"},
+          {"id":9,"cat":"beverages","name":"Saffron Iced Tea","price":6,"img":"https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=1200&auto=format&fit=crop&s=1","desc":"Chilled tea infused with saffron"},
+          {"id":10,"cat":"beverages","name":"Cardamom Latte","price":5,"img":"https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1200&auto=format&fit=crop&s=1","desc":"Warm and fragrant"},
+          {"id":11,"cat":"starters","name":"Crispy Prawn","price":12,"img":"https://images.unsplash.com/photo-1525755662778-989d0524087e?q=80&w=1200&auto=format&fit=crop&s=1","desc":"Chili lime glaze"},
+          {"id":12,"cat":"mains","name":"Vegetable Biryani","price":18,"img":"https://images.unsplash.com/photo-1603133872878-7e3533f6a5f3?q=80&w=1200&auto=format&fit=crop&s=1","desc":"Aromatic basmati with raita"}
+        ]
+        </script>
+        </div>
+    </section>
+
+    <!-- RESERVATION -->
+    <section id="reservation" class="reservation">
+        <div class="container">
+            <h3 data-aos="fade-up">Reserve a Table</h3>
+            <div class="glass mt-4 res-card" data-aos="fade-up" data-aos-delay="100">
+                <form id="resForm" class="row g-3 align-items-end">
+                    <div class="col-md-4"><label class="form-label">Full name</label><input required
+                            class="form-control" name="name"></div>
+                    <div class="col-md-4"><label class="form-label">Phone</label><input required class="form-control"
+                            name="phone"></div>
+                    <div class="col-md-4"><label class="form-label">Guests</label><select class="form-select"
+                            name="guests">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5+</option>
+                        </select></div>
+                    <div class="col-md-4"><label class="form-label">Date</label><input class="form-control fp-date"
+                            name="date" required></div>
+                    <div class="col-md-4"><label class="form-label">Time</label><input class="form-control fp-time"
+                            name="time" required></div>
+                    <div class="col-md-4 text-end"><button id="resSubmit" class="btn btn-cta" type="submit"><span
+                                class="btn-text">Confirm</span><span
+                                class="spinner-border spinner-border-sm ms-2 d-none" role="status"></span></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHEFS -->
+    <section id="chefs">
+        <div class="container">
+            <h3 data-aos="fade-up">Meet Our Chefs</h3>
+            <div class="row g-4 mt-3">
+                <div class="col-md-3" data-aos="fade-up">
+                    <div class="chef text-center">
+                        <div class="chef-img"><img
+                                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop&s=1"
+                                alt="Chef 1"></div>
+                        <h5 class="mt-3">Chef Mahmud</h5>
+                        <div class="gold">Head Chef</div>
+                        <div class="social"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i
+                                    class="fab fa-twitter"></i></a></div>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="chef text-center">
+                        <div class="chef-img"><img
+                                src="https://images.unsplash.com/photo-1548142813-1e4f9a3f9b06?q=80&w=800&auto=format&fit=crop&s=1"
+                                alt="Chef 2"></div>
+                        <h5 class="mt-3">Chef Lina</h5>
+                        <div class="gold">Pastry Chef</div>
+                        <div class="social"><a href="#"><i class="fab fa-instagram"></i></a></div>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="chef text-center">
+                        <div class="chef-img"><img
+                                src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop&s=1"
+                                alt="Chef 3"></div>
+                        <h5 class="mt-3">Chef Omar</h5>
+                        <div class="gold">Sous Chef</div>
+                        <div class="social"><a href="#"><i class="fab fa-facebook"></i></a></div>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="chef text-center">
+                        <div class="chef-img"><img
+                                src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800&auto=format&fit=crop&s=1"
+                                alt="Chef 4"></div>
+                        <h5 class="mt-3">Chef Mira</h5>
+                        <div class="gold">Executive Chef</div>
+                        <div class="social"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i
+                                    class="fab fa-linkedin"></i></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+        <div class="container">
+            <h3 data-aos="fade-up">Testimonials</h3>
+            <div class="swiper testiSwiper mt-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide testi">
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1545996124-1f34b7e0f5d9?q=80&w=200&auto=format&fit=crop&s=1"
+                                class="rounded-circle" width="64">
+                            <div>
+                                <strong>Anna P.</strong>
+                                <div class="stars">★★★★★</div>
+                                <p class="mb-0">Exceptional dining experience — flavors were sublime and service
+                                    impeccable.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide testi">
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop&s=1"
+                                class="rounded-circle" width="64">
+                            <div>
+                                <strong>Mark R.</strong>
+                                <div class="stars">★★★★★</div>
+                                <p class="mb-0">Beautiful ambiance and creative menu. Highly recommended.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+        <div class="container">
+            <h3 data-aos="fade-up">Gallery</h3>
+            <div class="masonry mt-3" data-aos="fade-up">
+                <div class="m-item"><a class="glightbox"
+                        href="https://images.unsplash.com/photo-1541544180106-2d95b6d3f2f0?q=80&w=1600&auto=format&fit=crop&s=1"><img
+                            src="https://images.unsplash.com/photo-1541544180106-2d95b6d3f2f0?q=80&w=800&auto=format&fit=crop&s=1"
+                            alt="Salmon" class="img-fluid"></a></div>
+                <div class="m-item"><a class="glightbox"
+                        href="https://images.unsplash.com/photo-1604908177522-0d45e7f6b6d5?q=80&w=1600&auto=format&fit=crop&s=1"><img
+                            src="https://images.unsplash.com/photo-1604908177522-0d45e7f6b6d5?q=80&w=800&auto=format&fit=crop&s=1"
+                            alt="Lamb" class="img-fluid"></a></div>
+                <div class="m-item"><a class="glightbox"
+                        href="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1600&auto=format&fit=crop&s=1"><img
+                            src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop&s=1"
+                            alt="Dessert" class="img-fluid"></a></div>
+                <div class="m-item"><a class="glightbox"
+                        href="https://images.unsplash.com/photo-1543353071-873f17a7a088?q=80&w=1600&auto=format&fit=crop&s=1"><img
+                            src="https://images.unsplash.com/photo-1543353071-873f17a7a088?q=80&w=800&auto=format&fit=crop&s=1"
+                            alt="Chef" class="img-fluid"></a></div>
+                <div class="m-item"><a class="glightbox"
+                        href="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1600&auto=format&fit=crop&s=1"><img
+                            src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop&s=1"
+                            alt="Dining" class="img-fluid"></a></div>
+                <div class="m-item"><a class="glightbox"
+                        href="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1600&auto=format&fit=crop&s=1"><img
+                            src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=800&auto=format&fit=crop&s=1"
+                            alt="Dessert Two" class="img-fluid"></a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTAGRAM + BLOG -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-6" data-aos="fade-up">
+                    <h3>Instagram</h3>
+                    <div class="row g-2 mt-3 insta-grid">
+                        <div class="col-4"><img
+                                src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop&s=1"
+                                alt="insta1" class="img-fluid rounded"></div>
+                        <div class="col-4"><img
+                                src="https://images.unsplash.com/photo-1543353071-873f17a7a088?q=80&w=600&auto=format&fit=crop&s=1"
+                                alt="insta2" class="img-fluid rounded"></div>
+                        <div class="col-4"><img
+                                src="https://images.unsplash.com/photo-1604908177522-0d45e7f6b6d5?q=80&w=600&auto=format&fit=crop&s=1"
+                                alt="insta3" class="img-fluid rounded"></div>
+                        <div class="col-4 mt-2"><img
+                                src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=600&auto=format&fit=crop&s=1"
+                                alt="insta4" class="img-fluid rounded"></div>
+                        <div class="col-4 mt-2"><img
+                                src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=600&auto=format&fit=crop&s=1"
+                                alt="insta5" class="img-fluid rounded"></div>
+                        <div class="col-4 mt-2"><img
+                                src="https://images.unsplash.com/photo-1542444459-db68b6c4b2b2?q=80&w=600&auto=format&fit=crop&s=1"
+                                alt="insta6" class="img-fluid rounded"></div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up">
+                    <h3>From Our Kitchen</h3>
+                    <div class="row mt-3">
+                        <div class="col-md-4">
+                            <div class="card blog-card p-3 glass">
+                                <h5>5 Winter Dishes</h5>
+                                <p class="small muted">Explore cozy flavors</p><a href="#" class="read">Read more</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card blog-card p-3 glass">
+                                <h5>Chef's Notes</h5>
+                                <p class="small muted">Technique & taste</p><a href="#" class="read">Read more</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card blog-card p-3 glass">
+                                <h5>Pairing Wines</h5>
+                                <p class="small muted">Sommelier tips</p><a href="#" class="read">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FLOATING ACTIONS -->
+    <div class="floating-stack">
+        <a class="floating-btn" href="https://wa.me/8801234567890" target="_blank" aria-label="WhatsApp"><i
+                class="fab fa-whatsapp"></i></a>
+        <a class="floating-btn" href="tel:+8801234567890" aria-label="Call"><i class="fas fa-phone"></i></a>
+    </div>
+    <div class="cart-fab" data-bs-toggle="offcanvas" data-bs-target="#miniCart"><i
+            class="fas fa-shopping-bag fa-2x"></i><span class="count">0</span></div>
+
+    <!-- MINI CART OFFCANVAS -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="miniCart">
+        <div class="offcanvas-header">
+            <h5>Your Cart</h5><button class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div id="cartList"></div>
+            <div class="d-flex justify-content-between mt-3"><strong>Total</strong><strong id="cartSum">$0</strong>
+            </div>
+            <div class="mt-3"><button id="checkoutBtn" class="btn btn-glow w-100">Checkout</button></div>
+        </div>
+    </div>
+
+    <!-- BACK TO TOP / progress ring -->
+    <div id="backTop" title="Back to top">
+        <i class="fa fa-arrow-up"></i>
+    </div>
+
+    <!-- NEWSLETTER + FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-top"></div>
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-md-6" data-aos="fade-up">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="footer-logo">Spice Palace</div>
+                        <div class="muted">Fine Dining & Cafe — © 2025</div>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end" data-aos="fade-up" data-aos-delay="100">
+                    <div class="socials"><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i
+                                class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-6" data-aos="fade-up">
+                    <h5>Newsletter</h5>
+                    <div class="d-flex gap-2">
+                        <input class="form-control" id="newsEmail" placeholder="Your email">
+                        <button id="newsBtn" class="btn btn-cta">Subscribe</button>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <small class="muted">© 2025 Spice Palace</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
